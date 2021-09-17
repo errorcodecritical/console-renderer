@@ -8,7 +8,9 @@ BINARY = ./bin
 LUA = ./lua
 
 all: init.o render.o camera.o vector3.o quaternion.o
+	make -C $(LUA)
 	$(CC) $(addprefix $(BUILD)/, $^) -o $(BINARY)/con -llua -L$(LUA) -lm -ldl
+
 
 # CORE
 
