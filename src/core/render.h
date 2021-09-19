@@ -12,8 +12,8 @@
 #include <sys/wait.h>
 
 extern struct __Viewport {
-    void (*Init)();
-    void (*Update)(double delta, void (*update_function)(double delta));
+    void (*init)();
+    void (*update)(double delta, void (*update_function)(double delta));
 
     clock_t clock;
     struct {

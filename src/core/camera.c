@@ -47,7 +47,6 @@ static void __Update(double delta) {
 
         float size_x = (float)viewport.viewport_size.x;
         float size_y = (float)viewport.viewport_size.y;
-
         float z_offset = 10.0;
 
         projected.x *= z_offset / (z_offset + projected.z);
