@@ -14,11 +14,11 @@ void __Init() {
 unsigned int iter = 0;
 void __Update(double delta, void (*update_function)(double delta)) {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &viewport.viewport_size);
-	int status;
-	if (fork() == 0) {
-		char* arguments[2] = { "clear", NULL };
-    	status = execvp("clear", arguments);
-	}
+    int status;
+    if (fork() == 0) {
+        char* arguments[2] = { "clear", NULL };
+        status = execvp("clear", arguments);
+    }
 	wait(&status);
     update_function(delta);
 
