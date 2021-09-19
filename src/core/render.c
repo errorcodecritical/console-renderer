@@ -14,16 +14,20 @@ void __Init() {
 unsigned int iter = 0;
 void __Update(double delta, void (*update_function)(double delta)) {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &viewport.viewport_size);
-    system("clear");
-    
+	int status;
+	if (fork() == 0) {
+		char* arguments[2] = { "clear", NULL };
+    	status = execvp("clear", arguments);
+	}
+	wait(&status);
     update_function(delta);
 
     viewport.viewport_buffer[viewport.viewport_size.x * viewport.viewport_size.y + 1] = 0x00;
-    
+
     printf("%f - %d : %dx%d\n", delta, iter, viewport.viewport_size.x, viewport.viewport_size.y);
     printf("%ls\n", viewport.viewport_buffer);
     iter++;
-    
+
 
     viewport.clock = clock();
 }

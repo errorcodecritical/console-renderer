@@ -9,6 +9,7 @@
 #include <time.h>
 #include <math.h>
 #include <sys/ioctl.h>
+#include <sys/wait.h>
 
 extern struct __Viewport {
     void (*Init)();
