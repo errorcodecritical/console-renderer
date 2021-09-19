@@ -19,7 +19,7 @@ void __Update(double delta, void (*update_function)(double delta)) {
         char* arguments[2] = { "clear", NULL };
         status = execvp("clear", arguments);
     }
-	wait(&status);
+    wait(&status);
     update_function(delta);
 
     viewport.viewport_buffer[viewport.viewport_size.x * viewport.viewport_size.y + 1] = 0x00;
